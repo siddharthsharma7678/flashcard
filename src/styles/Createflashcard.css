@@ -1,0 +1,152 @@
+.container{
+  width: 80%;
+}
+
+  .inputs{
+    padding: 10px;
+    background-color: white;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    align-items: center;
+    justify-content: center ;
+    margin-top: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 3px 0;
+  }
+  .inputs input{
+    width: 100%;
+  }
+  .inputs .mb-3:nth-child(1){
+        grid-column: span 1; 
+        margin-right: 30px;  
+  }
+  .inputs .mb-3:nth-child(2){
+    grid-column: span 1;
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    height: 35px;
+    width: 50%;
+    margin-top: 20px;
+    font-weight: 600;
+    border-radius: 2px;
+    color: rgba(0, 0, 255, 0.774);
+    border: 1.2px solid gray;
+    box-shadow: 0 0 1px 0;
+  }
+  .inputs .mb-3:nth-child(2) span{
+    margin-right: 10px;
+  }
+  .inputs .mb-3:nth-child(2) input{
+    display: none;
+  }
+  .inputs .mb-3:nth-child(3){
+    grid-column: span 2;
+  }
+  .inputs .mb-3:nth-child(3) textarea{
+    resize: none;
+  }
+  .Terms{
+    padding: 10px;
+    background-color: white;
+    /* display: flex; */
+    margin-top: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 3px 0;
+  }
+  .Term-container{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .Term-container div{
+    margin-left: 10px;
+    /* text-align: center; */
+  }
+  .Term-container span{
+    border: 1px solid red;
+    border-radius: 50%;
+    height: 30px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    background-color: red;
+    margin-top: 20px;
+    text-align: center;
+  }
+.Terms .addmore{
+  position: RELATIVE;
+  color: blue;
+  bottom: 0;
+  right: 0;
+  width: 80px;
+}
+.Terms .addmore h2{
+  font-size: 15px;
+}
+.Term-container .dande{
+  display: flex;
+  gap: 5px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.delete{
+  color: red;
+  margin-top: 5px;
+}
+.edit{
+  color: blue;
+}
+.selectImage{
+  display: flex;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    height: 35px;
+    width: 150px;
+    margin-top: 20px;
+    font-weight: 600;
+    border-radius: 2px;
+    color: rgba(0, 0, 255, 0.774);
+    border: 1.2px solid gray;
+    box-shadow: 0 0 1px 0;
+}
+.selectImage input{
+  display: none;
+}
+.Term{
+  width: 30%;
+}
+.definition{
+  width: 30%;
+}
+.logo{
+    display: flex;
+    background-color: rgb(224, 16, 16);
+    align-items: center;
+    height: 70px;
+}
+.logo img{
+    width: 90px;
+    height: 100%;
+}
+.main-header h1{
+  text-align: left;
+}
+.header{
+  display: flex;
+  margin: 10px;
+}
+.header .underline-tab{
+  margin-left: 10px;
+  padding: 10px;
+  border: .1px solid red;
+}
+.header .underline-tab a{
+        text-decoration: none;
+}

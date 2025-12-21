@@ -1,0 +1,7 @@
+.main-content{
+    height: 17rem;
+}
+.flash-name:active{
+    background-color: rgba(128, 128, 128, 0.411);
+    background-clip: content-box;
+}
