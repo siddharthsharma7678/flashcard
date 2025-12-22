@@ -7,7 +7,9 @@ const Createflashcard = () => {
     initialValues:{
       creategroup:"",
       addDescription:"",
-      Terms:[],
+    },
+    onSubmit:values =>{
+      alert(JSON.stringify(values,null,2))
     }
   });
 
@@ -22,14 +24,17 @@ const Createflashcard = () => {
   return (
     <>
       <div className="box bg-white shadow-md mt-4 ml-24 h-60 w-3/4 border-2 rounded">
-        <form className="form">
+        <form className="form" onSubmit={formik.handleSubmit}>
           <div className="form-div grid grid-cols-2">
             <div className="flex flex-col gap-2 ml-4">
               <label className=" text-gray-400">Create Group*</label>
               <input
                 className="border border-gray-300 p-1 rounded"
                 type="text"
-                placeholder=""
+                id="creategroup"
+                name="creategroup"
+                onChange={formik.handleChange}
+                value={formik.values.creategroup}
               />
             </div>
             <div className="flex flex-col gap-2 ml-4 justify-center items-center ">
@@ -51,6 +56,10 @@ const Createflashcard = () => {
             <div className="flex flex-col gap-2 col-span-2 m-4">
               <label className=" text-gray-400">Add description</label>
               <textarea
+              id="addDescription"
+              name="addDescription"
+              value={formik.values.addDescription}
+              onChange={formik.handleChange}
                 className="w-[40rem] h-28 border border-gray-300 rounded p-2"
                 placeholder="Enter description..."
               ></textarea>
