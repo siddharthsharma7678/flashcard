@@ -1,6 +1,24 @@
+import { useFormik } from "formik";
 import React from "react";
 import { FaFileUpload } from "react-icons/fa";
 const Createflashcard = () => {
+
+  const formik = useFormik({
+    initialValues:{
+      creategroup:"",
+      addDescription:"",
+      Terms:[],
+    }
+  });
+
+  // Append the Terms above the Terms using Add more button
+  const addTerms = (e) =>{
+      // const id = '';
+      const lowerTerm = document.querySelector('.TermMain');
+      const upperTerm = document.querySelector('#TermsContainer');
+      const child = upperTerm.cloneNode(true)
+      lowerTerm.appendChild(child);
+  };
   return (
     <>
       <div className="box bg-white shadow-md mt-4 ml-24 h-60 w-3/4 border-2 rounded">
@@ -40,8 +58,8 @@ const Createflashcard = () => {
           </div>
         </form>
       </div>
-      <div className="terms bg-white shadow-md mt-4 ml-24 w-3/4 border-2 rounded p-4">
-        <div className="flex items-start gap-6">
+      <div className="terms TermMain relative bg-white shadow-md mt-4 ml-24 w-3/4 border-2 rounded p-4">
+        <div id="TermsContainer" className="flex items-start gap-6">
           {/* Term */}
           <div className="flex flex-col">
             <label className="mb-1 text-gray-400">
@@ -75,9 +93,12 @@ const Createflashcard = () => {
             />
           </div>
         </div>
-        <h3 className="text-blue-800 cursor-pointer hover:text-blue-700">
+        <h3 onClick={addTerms} className="text-blue-800 absolute bottom-1 left-2 cursor-pointer hover:text-blue-700">
           + Add more
         </h3>
+        {/* <h3 onClick={addTerms} className="text-blue-800 absolute cursor-pointer hover:text-blue-700">
+          - Delete
+        </h3> */}
       </div>
       <div className="button flex justify-center items-center"></div>
       <div className="flex justify-center items-center m-4">
