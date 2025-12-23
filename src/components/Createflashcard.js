@@ -82,7 +82,9 @@ const Createflashcard = () => {
       </div>
       <div className="terms TermMain relative bg-white shadow-md mt-4 ml-24 w-3/4 border-2 rounded p-4">
         <FieldArray name="terms">
-          {({ push, remove }) => {
+          {({ push, remove, form }) => {
+            // form === the same formik object
+            const { setFieldValue } = form;
             <>
               {formik.values.Terms.map((_, index) => {
                 <div id="TermsContainer" className="flex items-start gap-6">
