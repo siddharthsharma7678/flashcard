@@ -1,10 +1,13 @@
 import React, { useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import { FieldArray, FormikProvider, useFormik } from "formik";
 import { FaFileUpload } from "react-icons/fa";
 import { FaEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
+import { uploadToCloudinary } from "./Upload/uploadToCloudinary";
 
 const Createflashcard = () => {
+  const navigate = useNavigate();
   const fileInputRef = useRef(null);
   const termImageRef = useRef([]);
   /* --------------------------------------------
@@ -15,7 +18,10 @@ const Createflashcard = () => {
      - Formik manages ALL state (no DOM manipulation)
   --------------------------------------------- */
   const handleTermImage = (index) => {
-    termImageRef.current[index]?.click();
+    if (termImageRef.current[index]) {
+      termImageRef.current[index].value = "";
+      termImageRef.current[index].click();
+    }
   };
 
   // delete the Image of specific term
@@ -39,9 +45,35 @@ const Createflashcard = () => {
         },
       ],
     },
-    onSubmit: (values) => {
-      console.log("Group image:", values.groupImage);
-      console.log("Term image:", values.Terms[0].image);
+    onSubmit: async (values) => {
+      const groupImageurl = values.groupImage
+        ? await uploadToCloudinary(values.groupImage)
+        : null;
+
+      const termsWithurl = await Promise.all(
+        values.Terms.map(async (t) => ({
+          ...t,
+          image: t.image ? await uploadToCloudinary(t.image) : null,
+        }))
+      );
+
+      const newFlashcard = {
+        id: Date.now(),
+        creategroup: values.creategroup,
+        addDescription: values.addDescription,
+        groupImage: groupImageurl,
+        Terms: termsWithurl,
+      };
+
+      console.log(newFlashcard);
+      const existing = JSON.parse(localStorage.getItem("flashcards")) || [];
+
+      localStorage.setItem(
+        "flashcards",
+        JSON.stringify([...existing, newFlashcard])
+      );
+      console.log(localStorage.getItem("flashcards"));
+      navigate("/Myflashcard");
     },
   });
 
