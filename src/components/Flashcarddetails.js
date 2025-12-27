@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-// import logo from "../images/logo.png";
+import logo from "../images/logo.png";
 import { FaArrowLeft } from "react-icons/fa";
 import { FaShare } from "react-icons/fa";
 import { FaArrowDown } from "react-icons/fa";
