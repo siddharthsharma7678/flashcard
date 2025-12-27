@@ -10,8 +10,8 @@ import Model from "./components/Model";
 function App() {
   return (
     <div className="App">
-      <Navbar />
       <Router>
+        <Navbar />
         <Routes>
           <Route path="/" element={<Createflashcard />}></Route>
           <Route path="/Myflashcard" element={<Myflashcard />}></Route>

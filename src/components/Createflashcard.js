@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FieldArray, FormikProvider, useFormik } from "formik";
 import { FaFileUpload } from "react-icons/fa";
@@ -10,6 +10,7 @@ const Createflashcard = () => {
   const navigate = useNavigate();
   const fileInputRef = useRef(null);
   const termImageRef = useRef([]);
+  const [status, setStatus] = useState(false);
   /* --------------------------------------------
      Formik setup
      --------------------------------------------
@@ -22,6 +23,11 @@ const Createflashcard = () => {
       termImageRef.current[index].value = "";
       termImageRef.current[index].click();
     }
+  };
+
+  // handle the submision of the form button so that it will disappear when the form is submited
+  const handleClick = () => {
+    setStatus(true);
   };
 
   // delete the Image of specific term
@@ -258,8 +264,11 @@ const Createflashcard = () => {
             {/* <div className="button flex justify-center items-center"></div> */}
             <div className="flex justify-center items-center m-4">
               <button
+                onClick={handleClick}
                 type="submit"
-                className="bg-red-600 text-white rounded p-1 w-24"
+                className={`bg-red-600 text-white rounded p-1 w-24 ${
+                  status ? "hidden" : ""
+                }`}
               >
                 Create
               </button>

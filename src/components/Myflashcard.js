@@ -30,11 +30,11 @@ const Myflashcard = () => {
             "
           >
             {/* Image */}
-            <div className="w-20 h-20 rounded-full overflow-hidden mb-4 -mt-16">
+            <div className="w-24 h-24 rounded-full mb-4 -mt-16">
               <img
                 src={value.groupImage}
                 alt=""
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover rounded-full p-4"
               />
             </div>
 

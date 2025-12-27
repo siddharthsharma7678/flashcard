@@ -1,6 +1,10 @@
 import React from "react";
 import logo from "../images/logo.png";
+import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 const Navbar = () => {
+  const navigate = useNavigate();
+  const Location = useLocation();
   return (
     <>
       <header className="w-full">
@@ -11,11 +15,21 @@ const Navbar = () => {
         <div className="box mt-4 ml-24 h-24 sm:w-3/4 w-1/2  border-b-2 border-gray-200">
           <h2 className="font-bold sm:text-xl text-sm">Create Flashcard</h2>
           <div className="flex justify-start mt-4">
-            <div className="m-4 text-gray-400 border-b-2 rounded-sm p-[5px] border-red-500 sm:text-xl text-xs">
+            <div
+              onClick={() => navigate("/")}
+              className={`cursor-pointer m-4 text-gray-400 border-b-2 rounded-sm p-[5px] sm:text-xl text-xs ${
+                Location.pathname === "/" ? "border-red-600" : ""
+              }`}
+            >
               Create New
             </div>
-            <div className="m-4 text-gray-400 border-b-2 rounded-sm p-[5px] sm:text-xl text-xs">
-              My Flashcard
+            <div
+              onClick={() => navigate("/myflashcard")}
+              className={`cursor-pointer m-4 text-gray-400 border-b-2 rounded-sm p-[5px] sm:text-xl text-xs ${
+                Location.pathname === "/myflashcard" ? "border-red-600" : ""
+              }`}
+            >
+              My Flashcards
             </div>
           </div>
         </div>
