@@ -164,7 +164,9 @@ const Createflashcard = () => {
                     {formik.values.Terms.map((item, index) => (
                       <div key={index} className="flex items-start gap-6">
                         {/* Term */}
-
+                        <span className="bg-red-500 rounded-full w-8 h-8 text-center">
+                          {index + 1}
+                        </span>
                         <div className="flex flex-col">
                           <label className="mb-1 text-gray-400">
                             Enter Term*
