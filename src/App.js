@@ -1,22 +1,25 @@
-import './App.css';
+import "./App.css";
 import "./index.css";
 
-import Navbar from './components/Navbar';
-import { BrowserRouter as Router, Routes,Route} from 'react-router-dom';
-import Createflashcard from './components/Createflashcard'
-import Myflashcard from './components/Myflashcard';
-import Flashcarddetails from './components/Flashcarddetails'
-import Model from './components/Model';
+import Navbar from "./components/Navbar";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Createflashcard from "./components/Createflashcard";
+import Myflashcard from "./components/Myflashcard";
+import Flashcarddetails from "./components/Flashcarddetails";
+import Model from "./components/Model";
 function App() {
   return (
     <div className="App">
-      <Navbar/>
+      <Navbar />
       <Router>
         <Routes>
-          <Route path='/' element={<Createflashcard/>}></Route>
-          <Route path='/Myflashcard' element={<Myflashcard/>}></Route>
-          <Route path='/Flashcarddetails' element={<Flashcarddetails/>}></Route>
-          {/* <Route path='/Flashcarddetails' element={<Model/>}></Route> */}
+          <Route path="/" element={<Createflashcard />}></Route>
+          <Route path="/Myflashcard" element={<Myflashcard />}></Route>
+          <Route
+            path="/Flashcarddetails/:id"
+            element={<Flashcarddetails />}
+          ></Route>
+          <Route path="/Model" element={<Model />}></Route>
         </Routes>
       </Router>
     </div>

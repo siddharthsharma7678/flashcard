@@ -1,38 +1,79 @@
 import React from "react";
-// import logo from "../images/logo.png";
-const Myflashcard = () => {
-  console.log(JSON.parse(localStorage.getItem("flashcards")));
+import { useNavigate } from "react-router-dom";
 
-  const FlashcardDetails = JSON.parse(localStorage.getItem("flashcards"));
+const Myflashcard = () => {
+  const navigate = useNavigate();
+
+  const flashcards = JSON.parse(localStorage.getItem("flashcards")) || [];
+
+  const HandleRedirectToFlashcardDetails = (id) => {
+    navigate(`/flashcarddetails/${id}`);
+  };
+
   return (
-    <>
-      <div className="flashcards mt-12 grid grid-cols-3 gap-4 ml-48 w-3/4">
-        {FlashcardDetails.map((value, index) => (
+    <div className="mt-12 px-4 sm:px-8 lg:px-16">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        {flashcards.map((value, index) => (
           <div
             key={index}
-            className="w-64 h-56 bg-white flex flex-col relative justify-center items-center m-4 shadow-md rounded p-4"
+            className="
+              bg-white
+              flex flex-col
+              items-center
+              shadow-md
+              rounded-lg
+              p-6
+              m-8
+              w-full
+              max-w-sm
+              mx-auto
+            "
           >
-            <div className="w-20 h-20 bg-red-500 rounded-full -top-10 absolute">
+            {/* Image */}
+            <div className="w-20 h-20 rounded-full overflow-hidden mb-4 -mt-16">
               <img
-                className="w-full h-full object-contain rounded-full"
                 src={value.groupImage}
                 alt=""
+                className="w-full h-full object-cover"
               />
             </div>
-            <h1 className="">{value.creategroup}</h1>
-            <p className="text-xs p-2 text-gray-500">{value.addDescription}</p>
-            <span className="text-[12px] text-gray-400">
-              {value.Terms.length}
+
+            {/* Title */}
+            <h1 className="text-sm font-semibold text-center truncate w-full">
+              {value.creategroup}
+            </h1>
+
+            {/* Description */}
+            <p className="text-xs text-gray-500 text-center mt-2 w-full break-words line-clamp-3">
+              {value.addDescription}
+            </p>
+
+            {/* Count */}
+            <span className="text-xs font-semibold text-gray-500 mt-3">
+              {value.Terms.length} cards
             </span>
-            <div className="flex absolute justify-center items-center bottom-8">
-              <button className="border-2 hover:border-red-600 border-red-500 w-56 text-red-500 p-1">
-                View Cards
-              </button>
-            </div>
+
+            {/* Button */}
+            <button
+              onClick={() => HandleRedirectToFlashcardDetails(value.id)}
+              className="
+                mt-4
+                w-full
+                border-2
+                border-red-500
+                text-red-500
+                hover:border-red-600
+                hover:text-red-600
+                p-2
+                rounded
+              "
+            >
+              View Cards
+            </button>
           </div>
         ))}
       </div>
-    </>
+    </div>
   );
 };
 
