@@ -96,6 +96,7 @@ const Createflashcard = () => {
               <div className="flex flex-col gap-2 ml-4">
                 <label className=" text-gray-400">Create Group*</label>
                 <input
+                  required={true}
                   className="border border-gray-300 p-1 rounded"
                   type="text"
                   name="creategroup"
@@ -124,6 +125,7 @@ const Createflashcard = () => {
                   ref={fileInputRef}
                   id="groupImage"
                   type="file"
+                  required={true}
                   accept=".png,.jpg,.jpeg,.svg"
                   className="hidden"
                   onChange={(event) =>
@@ -181,6 +183,7 @@ const Createflashcard = () => {
                             name={`Terms[${index}].term`}
                             value={item.term}
                             onChange={formik.handleChange}
+                            required={true}
                             className="border border-gray-300 p-2 rounded w-64"
                             type="text"
                           />
@@ -212,6 +215,7 @@ const Createflashcard = () => {
                         )}
                         <input
                           ref={(el) => (termImageRef.current[index] = el)}
+                          required={true}
                           onChange={(event) => {
                             formik.setFieldValue(
                               `Terms[${index}].image`,
