@@ -54,9 +54,9 @@ const Flashcarddetails = () => {
             </p>
           </div>
         </div>
-        <div className="flex gap-2 mt-4">
-          <div className="bg-white shadow-md w-1/4 h-full p-8 text-gray-600">
-            <h3 className="border-b-2 font-bolder text-4xl">Flashcards</h3>
+        <div className="flex sm:flex-row flex-col gap-2 mt-4">
+          <div className="bg-white shadow-md sm:w-1/4 w-3/4 h-full p-8 text-gray-600">
+            <h3 className="border-b-2 font-bolder text-4xl pb-2">Flashcards</h3>
             <div>
               <ul>
                 {currentCard.Terms.map((value, index) => (
@@ -75,8 +75,8 @@ const Flashcarddetails = () => {
             </div>
           </div>
           <div className="flex flex-col items-center w-3/4">
-            <div className="bg-white shadow-md flex gap-1 w-full min-h-64 h-96">
-              <div className="img w-full m-8">
+            <div className="bg-white shadow-md flex gap-1 w-full sm:min-h-64 sm:h-96 h-56">
+              <div className="img w-full sm:m-8 m-2">
                 <img
                   className="w-full h-full object-contain"
                   src={image}
@@ -84,7 +84,7 @@ const Flashcarddetails = () => {
                 />
               </div>
               <div className="des w-1/2 flex justify-center items-start mt-4 text-sm p-8">
-                <p className="text-gray-600 text-lg">{des}</p>
+                <p className="text-gray-600 sm:text-lg text-sm">{des}</p>
               </div>
             </div>
             <div className="navigation-button flex gap-16 mt-4">

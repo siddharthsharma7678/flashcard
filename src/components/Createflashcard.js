@@ -86,7 +86,7 @@ const Createflashcard = () => {
   return (
     <>
       {/* ===================== GROUP DETAILS ===================== */}
-      <div className="box mt-4 ml-24 w-3/4 border-2 rounded">
+      <div className="box mt-4 sm:ml-24 sm:w-3/4 w-72 m-12 border-2 rounded">
         {/* IMPORTANT:
            Button must be inside <form> to trigger submit */}
         <FormikProvider value={formik}>
@@ -111,7 +111,7 @@ const Createflashcard = () => {
                 {!formik.values.groupImage && (
                   <>
                     <label htmlFor="groupImage">
-                      <div className="flex justify-center mt-6 items-center gap-2 border border-gray-300 hover:border-blue-300 rounded w-36 h-8">
+                      <div className="flex justify-center mt-6 items-center gap-2 border border-gray-300 hover:border-blue-300 rounded sm:w-36 sm:h-16 w-24 p-4">
                         <div className="text-blue-600">
                           <FaFileUpload />
                         </div>
@@ -150,12 +150,12 @@ const Createflashcard = () => {
               {/* ---------- Description ---------- */}
 
               <div className="flex flex-col gap-2 col-span-2 m-4">
-                <label className=" text-gray-400">Add description</label>
+                <label for='addDescription' className="text-gray-400">Add description</label>
                 <textarea
                   name="addDescription"
                   value={formik.values.addDescription}
                   onChange={formik.handleChange}
-                  className="w-[40rem] h-28 border border-gray-300 rounded p-2"
+                  className="sm:w-[40rem] sm:h-28 w-full h-20 border border-gray-300 rounded p-2"
                   placeholder="Enter description..."
                 />
               </div>
@@ -168,7 +168,7 @@ const Createflashcard = () => {
                 {({ push }) => (
                   <>
                     {formik.values.Terms.map((item, index) => (
-                      <div key={index} className="flex items-start gap-6">
+                      <div key={index} className="flex flex-col sm:flex-row items-start sm:gap-6 gap-2 mt-6 mb-6">
                         {/* Term */}
                         <span className="bg-red-500 rounded-full w-8 h-8 text-center">
                           {index + 1}
@@ -195,13 +195,13 @@ const Createflashcard = () => {
                             name={`Terms[${index}].definition`}
                             onChange={formik.handleChange}
                             value={item.definition}
-                            className="border border-gray-300 p-2 rounded w-80 h-20 resize-none"
+                            className="border border-gray-300 p-2 rounded sm:w-80 sm:h-20 w-full h-15 resize-none"
                           />
                         </div>
 
                         {/* Image Upload */}
                         {!item.image && (
-                          <div className="flex flex-col mt-12">
+                          <div className="flex flex-col sm:mt-12 mt-2">
                             <label
                               htmlFor={`termImage-${index}`}
                               className="flex justify-center items-center gap-2 border border-gray-300 rounded w-36 h-10 cursor-pointer hover:border-blue-500"
@@ -253,7 +253,7 @@ const Createflashcard = () => {
                       onClick={() =>
                         push({ term: "", definition: "", image: null })
                       }
-                      className="text-blue-800 absolute bottom-1 left-2 cursor-pointer hover:text-blue-700"
+                      className="text-blue-800 absolute sm:bottom-1 sm:left-2 left-20 bottom-1 cursor-pointer hover:text-blue-700 mt-12"
                     >
                       + Add more
                     </button>

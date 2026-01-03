@@ -12,7 +12,7 @@ const Navbar = () => {
           <img className="filter invert h-20 w-20 " src={logo} alt="logo" />
         </nav>
 
-        <div className="box mt-4 ml-24 h-24 sm:w-3/4 w-1/2  border-b-2 border-gray-200">
+        <div className="box mt-4 ml-24 h-24 sm:w-3/4 w-1/2 border-gray-200">
           <h2 className="font-bold sm:text-xl text-sm">Create Flashcard</h2>
           <div className="flex justify-start mt-4">
             <div
