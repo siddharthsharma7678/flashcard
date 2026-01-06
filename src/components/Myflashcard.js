@@ -23,6 +23,7 @@ const Myflashcard = () => {
               shadow-md
               rounded-lg
               p-6
+              -translate-x-8
               sm:m-8
               m-4
               min-h-56

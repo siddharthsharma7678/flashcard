@@ -39,15 +39,18 @@ const Model = () => {
   return (
     <>
       <div class="fixed top-0 w-full h-full flex justify-center items-center backdrop-blur-sm ">
-        <div className="bg-white h-64 w-auto shadow-md p-4 rounded">
+        <div className="bg-white h-64 sm:w-auto w-5/6 shadow-md p-4 rounded -ml-16">
           <span onClick={handleCross} className="flex justify-end m-2">
             <RxCross2 />
           </span>
           <div className="share m-4">Share</div>
-          <div className="link">
-            <div class="flex items-center gap-2 border-2 border-gray-400 rounded px-4">
+          <div className="link w-full">
+            <div class="flex items-center sm:gap-2 border-2 border-gray-400 rounded sm:px-4">
               <div class="text-gray-700 border-r-2 p-2">src</div>
-              <div id="flahcard-link" class="flex-1 px-4 mx-2 border-r-2 p-2">
+              <div
+                id="flahcard-link"
+                class="flex-1 text-sm sm:px-4 sm:mx-2 border-r-2 sm:p-2 w-1/2 border-l-2 border-gray-400 break-all p-2"
+              >
                 {url}
               </div>
               <div onClick={handleCopy} className="border-r-2 p-[12px]">

@@ -125,7 +125,7 @@ const Createflashcard = () => {
   return (
     <>
       {/* ===================== GROUP DETAILS ===================== */}
-      <div className="box mt-4 sm:ml-24 ml-6 w-5/6 sm:w-3/4 border-2 rounded">
+      <div className="box mt-4 sm:ml-24 ml-4 w-4/5 sm:w-3/4 border-2 rounded">
         {/* IMPORTANT:
            Button must be inside <form> to trigger submit */}
         <FormikProvider value={formik}>

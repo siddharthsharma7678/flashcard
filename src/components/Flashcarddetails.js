@@ -74,8 +74,8 @@ const Flashcarddetails = () => {
               </ul>
             </div>
           </div>
-          <div className="flex flex-col items-center sm:w-4/5">
-            <div className="bg-white shadow-md flex gap-1 w-auto h-auto sm:w-full sm:flex-row flex-col sm:min-h-64">
+          <div className="flex flex-col items-center sm:w-4/5 w-full -ml-10">
+            <div className="bg-white shadow-md flex gap-1 w-3/4 h-auto sm:w-full sm:flex-row flex-col sm:min-h-64">
               <div className="img sm:w-full w-3/4 m-8">
                 <img
                   className="w-full h-full object-contain"
