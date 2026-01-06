@@ -23,20 +23,25 @@ const Myflashcard = () => {
               shadow-md
               rounded-lg
               p-6
-              m-8
-              w-full
+              sm:m-8
+              m-4
+              min-h-56
+              sm:w-full
+              w-4/5
               max-w-sm
               mx-auto
             "
           >
             {/* Image */}
-            <div className="w-24 h-24 rounded-full mb-4 -mt-16">
-              <img
-                src={value.groupImage}
-                alt=""
-                className="w-full h-full object-cover rounded-full p-4"
-              />
-            </div>
+            {value.groupImage && (
+              <div className="w-24 h-24 rounded-full mb-4 -mt-16">
+                <img
+                  src={value.groupImage}
+                  alt=""
+                  className="w-full h-full object-cover rounded-full p-4"
+                />
+              </div>
+            )}
 
             {/* Title */}
             <h1 className="text-sm font-semibold text-center truncate w-full">

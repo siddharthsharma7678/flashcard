@@ -17,7 +17,7 @@ const Navbar = () => {
           <div className="flex justify-start mt-4">
             <div
               onClick={() => navigate("/")}
-              className={`cursor-pointer m-4 text-gray-400 border-b-2 rounded-sm p-[5px] sm:text-xl text-xs ${
+              className={`cursor-pointer m-4 text-gray-400 border-b-2 rounded-sm sm:p-[3px] p-[5px] sm:text-xl text-xs ${
                 Location.pathname === "/" ? "border-red-600" : ""
               }`}
             >
@@ -25,7 +25,7 @@ const Navbar = () => {
             </div>
             <div
               onClick={() => navigate("/myflashcard")}
-              className={`cursor-pointer m-4 text-gray-400 border-b-2 rounded-sm p-[5px] sm:text-xl text-xs ${
+              className={`cursor-pointer m-4 text-gray-400 border-b-2 rounded-sm sm:p-[3px] p-[5px] sm:text-xl text-xs ${
                 Location.pathname === "/myflashcard" ? "border-red-600" : ""
               }`}
             >

@@ -54,8 +54,8 @@ const Flashcarddetails = () => {
             </p>
           </div>
         </div>
-        <div className="flex gap-2 mt-4">
-          <div className="bg-white shadow-md w-1/4 h-full p-8 text-gray-600">
+        <div className="flex gap-2 mt-4 sm:flex-row flex-col">
+          <div className="bg-white shadow-md sm:w-1/4 h-full p-8 text-gray-600 w-3/4">
             <h3 className="border-b-2 font-bolder text-4xl">Flashcards</h3>
             <div>
               <ul>
@@ -74,20 +74,20 @@ const Flashcarddetails = () => {
               </ul>
             </div>
           </div>
-          <div className="flex flex-col items-center w-3/4">
-            <div className="bg-white shadow-md flex gap-1 w-full min-h-64 h-96">
-              <div className="img w-full m-8">
+          <div className="flex flex-col items-center sm:w-4/5">
+            <div className="bg-white shadow-md flex gap-1 w-auto h-auto sm:w-full sm:flex-row flex-col sm:min-h-64">
+              <div className="img sm:w-full w-3/4 m-8">
                 <img
                   className="w-full h-full object-contain"
                   src={image}
                   alt="imag"
                 />
               </div>
-              <div className="des w-1/2 flex justify-center items-start mt-4 text-sm p-8">
-                <p className="text-gray-600 text-lg">{des}</p>
+              <div className="des sm:w-1/2 w-full h-auto flex flex-col justify-start items-start p-4">
+                <div className="text-gray-600 text-lg break-all">{des}</div>
               </div>
             </div>
-            <div className="navigation-button flex gap-16 mt-4">
+            <div className="navigation-button flex gap-20 p-1">
               <div className="">
                 <FaChevronLeft
                   onClick={() => {
@@ -97,7 +97,7 @@ const Flashcarddetails = () => {
                       setCurrentTerms(currentTerms - 1);
                     }
                   }}
-                  className="text-3xl"
+                  className="text-2xl"
                 />
               </div>
               <div>
@@ -109,7 +109,7 @@ const Flashcarddetails = () => {
                       setCurrentTerms(currentTerms + 1);
                     }
                   }}
-                  className="text-3xl"
+                  className="text-2xl"
                 />
               </div>
             </div>

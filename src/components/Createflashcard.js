@@ -26,9 +26,7 @@ const Createflashcard = () => {
   };
 
   // handle the submision of the form button so that it will disappear when the form is submited
-  const handleClick = () => {
-    setStatus(true);
-  };
+  const handleClick = () => {};
 
   // delete the Image of specific term
   const handleTermDelete = (index) => {
@@ -37,6 +35,46 @@ const Createflashcard = () => {
   const handleEdit = () => {
     fileInputRef.current?.click();
   };
+
+  //form validattion using formik start
+  const validate = (values) => {
+    const errors = {};
+    if (!values.creategroup) {
+      errors.creategroup = "Please add the creategroup !";
+    } else if (values.creategroup.length < 3) {
+      errors.creategroup = "createGroup should be atleast 3 character !";
+    }
+
+    if (!values.addDescription) {
+      errors.addDescription = "Please Add Description !";
+    } else if (values.addDescription.length < 20) {
+      errors.addDescription = "Description should be more than 20 characters !";
+    }
+
+    const termsErrors = {};
+    values.Terms.forEach((item, index) => {
+      const itemErros = {};
+      if (!item.term) {
+        itemErros.term = "Please add Term !";
+      } else if (item.term.length < 3) {
+        itemErros.term = "Please add more that 3 characters !";
+      }
+      if (!item.definition) {
+        itemErros.definition = "Please add Definition !";
+      } else if (item.definition.length < 15) {
+        itemErros.definition = "Please add more that 15 characters !";
+      }
+      if (Object.keys(itemErros).length > 0) {
+        termsErrors[index] = itemErros;
+      }
+    });
+
+    if (Object.keys(termsErrors).length > 0) {
+      errors.Terms = termsErrors;
+    }
+    return errors;
+  };
+  //form validattion using formik end
 
   const formik = useFormik({
     initialValues: {
@@ -51,6 +89,7 @@ const Createflashcard = () => {
         },
       ],
     },
+    validate: validate,
     onSubmit: async (values) => {
       const groupImageurl = values.groupImage
         ? await uploadToCloudinary(values.groupImage)
@@ -86,7 +125,7 @@ const Createflashcard = () => {
   return (
     <>
       {/* ===================== GROUP DETAILS ===================== */}
-      <div className="box mt-4 ml-24 w-3/4 border-2 rounded">
+      <div className="box mt-4 sm:ml-24 ml-6 w-5/6 sm:w-3/4 border-2 rounded">
         {/* IMPORTANT:
            Button must be inside <form> to trigger submit */}
         <FormikProvider value={formik}>
@@ -96,12 +135,17 @@ const Createflashcard = () => {
               <div className="flex flex-col gap-2 ml-4">
                 <label className=" text-gray-400">Create Group*</label>
                 <input
-                  className="border border-gray-300 p-1 rounded"
+                  className="border border-gray-300 rounded"
                   type="text"
                   name="creategroup"
                   onChange={formik.handleChange}
                   value={formik.values.creategroup}
                 />
+                {formik.touched.creategroup && formik.errors.creategroup && (
+                  <p className="text-red-500 text-sm ml-2 font-semibold">
+                    {formik.errors.creategroup}
+                  </p>
+                )}
               </div>
 
               {/* ---------- Group Image Upload ---------- */}
@@ -111,7 +155,7 @@ const Createflashcard = () => {
                 {!formik.values.groupImage && (
                   <>
                     <label htmlFor="groupImage">
-                      <div className="flex justify-center mt-6 items-center gap-2 border border-gray-300 hover:border-blue-300 rounded w-36 h-8">
+                      <div className="flex justify-center mt-6 items-center gap-2 border border-gray-300 hover:border-blue-300 rounded w-32 h-8 translate-y-1 -translate-x-3">
                         <div className="text-blue-600">
                           <FaFileUpload />
                         </div>
@@ -135,14 +179,18 @@ const Createflashcard = () => {
                 />
 
                 {formik.values.groupImage && (
-                  <div className="flex gap-2 justify-center items-center  ">
+                  <div className="flex gap-2 justify-center items-center">
                     <img
                       src={URL.createObjectURL(formik.values.groupImage)}
                       alt="Group Preview"
-                      className="w-auto h-48 mt-3 object-cover rounded border"
+                      className="w-auto h-16 mt-3 object-cover rounded border"
                     />
                     {/* <div className="add"></div> */}
-                    <FaEdit onClick={handleEdit} title="Upload New" />
+                    <FaEdit
+                      onClick={handleEdit}
+                      className="text-gray-500 text-2xl"
+                      title="Upload New"
+                    />
                   </div>
                 )}
               </div>
@@ -155,9 +203,15 @@ const Createflashcard = () => {
                   name="addDescription"
                   value={formik.values.addDescription}
                   onChange={formik.handleChange}
-                  className="w-[40rem] h-28 border border-gray-300 rounded p-2"
+                  className="sm:w-[40rem] w-auto h-20 border border-gray-300 rounded p-2"
                   placeholder="Enter description..."
                 />
+                {formik.touched.addDescription &&
+                  formik.errors.addDescription && (
+                    <p className="text-red-500 text-sm ml-2 font-semibold">
+                      {formik.errors.addDescription}
+                    </p>
+                  )}
               </div>
             </div>
 
@@ -168,9 +222,12 @@ const Createflashcard = () => {
                 {({ push }) => (
                   <>
                     {formik.values.Terms.map((item, index) => (
-                      <div key={index} className="flex items-start gap-6">
+                      <div
+                        key={index}
+                        className="flex items-start sm:gap-6 gap-2 sm:flex-row flex-col"
+                      >
                         {/* Term */}
-                        <span className="bg-red-500 rounded-full w-8 h-8 text-center">
+                        <span className="bg-red-500 rounded-full sm:w-8 sm:h-8 w-8 h-8 translate-y-7 flex justify-center items-center mb-8">
                           {index + 1}
                         </span>
                         <div className="flex flex-col">
@@ -181,9 +238,15 @@ const Createflashcard = () => {
                             name={`Terms[${index}].term`}
                             value={item.term}
                             onChange={formik.handleChange}
-                            className="border border-gray-300 p-2 rounded w-64"
+                            className="border border-gray-300 p-2 rounded h-8 sm:w-64 w-32"
                             type="text"
                           />
+                          {formik.touched.Terms?.[index]?.term &&
+                            formik.errors.Terms?.[index]?.term && (
+                              <p className="text-red-500 text-sm ml-2 font-semibold">
+                                {formik.errors.Terms[index].term}
+                              </p>
+                            )}
                         </div>
 
                         {/* Definition */}
@@ -195,13 +258,19 @@ const Createflashcard = () => {
                             name={`Terms[${index}].definition`}
                             onChange={formik.handleChange}
                             value={item.definition}
-                            className="border border-gray-300 p-2 rounded w-80 h-20 resize-none"
+                            className="border border-gray-300 p-2 rounded sm:w-80 sm:h-20 w-auto resize-none"
                           />
+                          {formik.touched.Terms?.[index]?.definition &&
+                            formik.errors.Terms?.[index]?.definition && (
+                              <p className="text-red-500 text-sm ml-2 font-semibold">
+                                {formik.errors.Terms[index].definition}
+                              </p>
+                            )}
                         </div>
 
                         {/* Image Upload */}
                         {!item.image && (
-                          <div className="flex flex-col mt-12">
+                          <div className="flex flex-col sm:mt-12 mb-8">
                             <label
                               htmlFor={`termImage-${index}`}
                               className="flex justify-center items-center gap-2 border border-gray-300 rounded w-36 h-10 cursor-pointer hover:border-blue-500"
@@ -224,25 +293,29 @@ const Createflashcard = () => {
                           accept=".png, .svg, .jpg, .jpeg"
                         />
                         {item.image && (
-                          <div className="flex gap-2 justify-center items-center  ">
+                          <div className="flex gap-2 justify-center items-center translate-y-4 mb-8">
                             <img
                               src={URL.createObjectURL(item.image)}
                               alt="Group Preview"
-                              className="w-auto h-24 mt-3 object-cover rounded border"
+                              className="w-auto h-20 mt-3 object-cover rounded border"
                             />
                             {/* <div className="add"></div> */}
-                            <FaEdit
-                              onClick={() => {
-                                handleTermImage(index);
-                              }}
-                              title="Upload New"
-                            />
-                            <MdDelete
-                              onClick={() => {
-                                handleTermDelete(index);
-                              }}
-                              title="Delete Image"
-                            />
+                            <div className="flex flex-col gap-4">
+                              <FaEdit
+                                className="text-gray-500 text-2xl"
+                                onClick={() => {
+                                  handleTermImage(index);
+                                }}
+                                title="Upload New"
+                              />
+                              <MdDelete
+                                className="text-gray-500 text-2xl"
+                                onClick={() => {
+                                  handleTermDelete(index);
+                                }}
+                                title="Delete Image"
+                              />
+                            </div>
                           </div>
                         )}
                       </div>
