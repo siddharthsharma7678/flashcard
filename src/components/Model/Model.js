@@ -43,17 +43,19 @@ const Model = () => {
   return (
     <>
       <div class="fixed top-0 w-full h-full flex justify-center items-center backdrop-blur-sm ">
-        <div className="bg-white h-64 sm:w-auto w-5/6 shadow-md p-4 rounded -ml-16">
+        <div className="bg-white h-64 sm:w-auto w-5/6 shadow-md p-4 rounded -ml-16 dark:bg-gray-500">
           <span onClick={handleCross} className="flex justify-end m-2">
             <RxCross2 />
           </span>
-          <div className="share m-4">Share</div>
+          <div className="share m-4 dark:text-white">Share</div>
           <div className="link w-full">
             <div class="flex items-center sm:gap-2 border-2 border-gray-400 rounded sm:px-4">
-              <div class="text-gray-700 border-r-2 p-2">src</div>
+              <div class="text-gray-700 border-r-2 p-2 dark:text-white">
+                src
+              </div>
               <div
                 id="flahcard-link"
-                class="flex-1 text-sm sm:px-4 sm:mx-2 border-r-2 sm:p-2 w-1/2 border-l-2 border-gray-400 break-all p-2"
+                class="flex-1 text-sm sm:px-4 sm:mx-2 border-r-2 sm:p-2 w-1/2 border-l-2 border-gray-400 break-all p-2 dark:text-white"
               >
                 {url}
               </div>
@@ -82,7 +84,7 @@ const Model = () => {
             <div className="rounded-full w-8 h-8 flex justify-center items-center text-[#1DA1F2]">
               <FaTwitter className="w-full h-full" />
             </div>
-            <div className="rounded-full w-8 h-8 flex justify-center items-center text-gray-500">
+            <div className="rounded-full w-8 h-8 flex justify-center items-center text-gray-500 dark:text-white">
               <CiMail className="w-full h-full" />
             </div>
           </div>
