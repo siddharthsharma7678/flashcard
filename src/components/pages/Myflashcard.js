@@ -20,6 +20,7 @@ const Myflashcard = () => {
             key={index}
             className="
               bg-white
+              dark:bg-gray-800
               flex flex-col
               items-center
               shadow-md
@@ -33,6 +34,11 @@ const Myflashcard = () => {
               w-4/5
               max-w-sm
               mx-auto
+              hover:border-t-2
+              hover:border-b-2
+              hover:border-red-400
+              dark:hover:border-t-2
+              dark:hover:border-b-2
             "
           >
             {/* Image */}
@@ -47,7 +53,7 @@ const Myflashcard = () => {
             )}
 
             {/* Title */}
-            <h1 className="text-sm font-semibold text-center truncate w-full">
+            <h1 className="text-sm font-semibold text-center truncate w-full dark:text-white">
               {value.creategroup}
             </h1>
 

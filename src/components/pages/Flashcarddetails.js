@@ -50,7 +50,7 @@ const Flashcarddetails = () => {
             <FaArrowLeft />
           </span>
           <div className="heading">
-            <h3 className="font-bold mt-[-5px] m-4">
+            <h3 className="font-bold mt-[-5px] m-4 dark:text-white">
               {currentCard.creategroup}
             </h3>
             <p className="text-sm text-gray-500 m-4">
@@ -59,17 +59,17 @@ const Flashcarddetails = () => {
           </div>
         </div>
         <div className="flex gap-2 mt-4 sm:flex-row flex-col">
-          <div className="bg-white shadow-md sm:w-1/4 h-full p-8 text-gray-600 w-3/4">
+          <div className="bg-white shadow-md sm:w-1/4 h-full p-8 text-gray-600 w-3/4 dark:bg-gray-800">
             <h3 className="border-b-2 font-bolder text-4xl">Flashcards</h3>
             <div>
               <ul>
                 {currentCard.Terms.map((value, index) => (
                   <li
                     onClick={() => setContent(index)}
-                    className={`cursor-pointer text-xl text-black ${
+                    className={`cursor-pointer text-xl text-black dark:text-white border ${
                       currentTerms === index
-                        ? "bg-red-500 text-white rounded px-4 py-2"
-                        : "bg-gray-100"
+                        ? "bg-red-500 dark:bg-gray-900 text-white rounded px-4 py-2"
+                        : "bg-gray-100 dark:bg-gray-800"
                     }`}
                   >
                     {value.term}
@@ -79,7 +79,7 @@ const Flashcarddetails = () => {
             </div>
           </div>
           <div className="flex flex-col items-center sm:w-4/5 w-full -ml-10 sm:ml-2">
-            <div className="bg-white shadow-md flex gap-1 w-3/4 h-auto sm:w-full sm:flex-row flex-col sm:min-h-64 sm:max-h-80">
+            <div className="bg-white shadow-md flex gap-1 w-3/4 h-auto sm:w-full sm:flex-row flex-col sm:min-h-64 sm:max-h-80 dark:bg-gray-800">
               <div className="img sm:w-full w-3/4 m-8">
                 <img
                   className="w-full h-full object-contain"
@@ -121,20 +121,20 @@ const Flashcarddetails = () => {
           <div className="flex flex-col">
             <div
               onClick={shareModel}
-              className="bg-white text-xl shadow-md  p-5 w-56 h-8 flex justify-start items-center gap-4 m-1 text-gray-600"
+              className="bg-white text-xl shadow-md  p-5 w-56 h-8 flex justify-start items-center gap-4 m-1 text-gray-600 dark:bg-gray-800 dark:text-white"
             >
               <span>
                 <FaShare className="text-xl" />
               </span>
               Share
             </div>
-            <div className="bg-white text-xl shadow-md   p-5 w-56 h-8 flex justify-start items-center gap-4 m-1 text-gray-600">
+            <div className="bg-white text-xl shadow-md   p-5 w-56 h-8 flex justify-start items-center gap-4 m-1 text-gray-600 dark:bg-gray-800 dark:text-white">
               <span>
                 <FaArrowDown className="text-xl" />
               </span>
               Download
             </div>
-            <div className="bg-white text-xl shadow-md   p-5 w-56 h-8 flex justify-start items-center gap-4 m-1 text-gray-600">
+            <div className="bg-white text-xl shadow-md   p-5 w-56 h-8 flex justify-start items-center gap-4 m-1 text-gray-600 dark:bg-gray-800 dark:text-white">
               <span>
                 <FaPrint className="text-xl" />
               </span>

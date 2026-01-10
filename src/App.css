@@ -1,3 +1,6 @@
 body {
   background-color: rgba(228, 151, 151, 0.233);
 }
+.dark body {
+  background-color: #0f172ace; /* dark slate */
+}

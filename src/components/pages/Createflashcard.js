@@ -134,7 +134,7 @@ const Createflashcard = () => {
   return (
     <>
       {/* ===================== GROUP DETAILS ===================== */}
-      <div className="box mt-4 sm:ml-24 ml-4 w-4/5 sm:w-3/4 border-2 rounded">
+      <div className="box mt-4 sm:ml-24 ml-4 w-4/5 sm:w-3/4 rounded">
         {status && (
           <Confetti
             numberOfPieces={400}
@@ -149,12 +149,12 @@ const Createflashcard = () => {
            Button must be inside <form> to trigger submit */}
         <FormikProvider value={formik}>
           <form className="form" onSubmit={formik.handleSubmit}>
-            <div className="form-div bg-white grid grid-cols-2">
+            <div className="form-div bg-white grid grid-cols-2 dark:bg-gray-800">
               {/* ---------- Create Group ---------- */}
               <div className="flex flex-col gap-2 ml-4">
                 <label className=" text-gray-400">Create Group*</label>
                 <input
-                  className="border border-gray-300 rounded"
+                  className="border border-gray-300 rounded dark:bg-gray-900 dark:text-white"
                   type="text"
                   name="creategroup"
                   onChange={formik.handleChange}
@@ -222,7 +222,7 @@ const Createflashcard = () => {
                   name="addDescription"
                   value={formik.values.addDescription}
                   onChange={formik.handleChange}
-                  className="sm:w-[40rem] w-auto h-20 border border-gray-300 rounded p-2"
+                  className="sm:w-[40rem] w-auto h-20 border border-gray-300 rounded p-2 dark:bg-gray-900 dark:text-white"
                   placeholder="Enter description..."
                 />
                 {formik.touched.addDescription &&
@@ -236,7 +236,7 @@ const Createflashcard = () => {
 
             {/* Terms Section */}
 
-            <div className="terms TermMain relative bg-white shadow-md mt-4 w-full border-2 rounded p-4">
+            <div className="terms TermMain relative bg-white shadow-md mt-4 w-full border-2 rounded p-4 dark:bg-gray-800">
               <FieldArray name="Terms">
                 {({ push }) => (
                   <>
@@ -257,7 +257,7 @@ const Createflashcard = () => {
                             name={`Terms[${index}].term`}
                             value={item.term}
                             onChange={formik.handleChange}
-                            className="border border-gray-300 p-2 rounded h-8 sm:w-64 w-32"
+                            className="border border-gray-300 p-2 rounded h-8 sm:w-64 w-32 dark:bg-gray-900 dark:text-white"
                             type="text"
                           />
                           {formik.touched.Terms?.[index]?.term &&
@@ -277,7 +277,7 @@ const Createflashcard = () => {
                             name={`Terms[${index}].definition`}
                             onChange={formik.handleChange}
                             value={item.definition}
-                            className="border border-gray-300 p-2 rounded sm:w-80 sm:h-20 w-auto resize-none"
+                            className="border border-gray-300 p-2 rounded sm:w-80 sm:h-20 w-auto resize-none dark:bg-gray-900  dark:text-white"
                           />
                           {formik.touched.Terms?.[index]?.definition &&
                             formik.errors.Terms?.[index]?.definition && (

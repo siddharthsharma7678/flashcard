@@ -1,19 +1,37 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import logo from "../images/logo.png";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 const Navbar = () => {
+  const [dark, setDark] = useState(false);
+
+  useEffect(() => {
+    document.documentElement.classList.toggle("dark", dark);
+  }, [dark]);
+
   const navigate = useNavigate(); // use to navigate with diffrent url
   const Location = useLocation(); // used for getting the params and paths
   return (
     <>
       <header className="w-full">
-        <nav className="shadow-md w-full h-10 bg-white flex justify-start items-center">
-          <img className="filter invert h-20 w-20 " src={logo} alt="logo" />
+        <nav className="shadow-md w-full h-10 bg-white flex justify-between items-center dark:bg-gray-800">
+          <img
+            className="filter invert h-20 w-20 dark:invert-0 "
+            src={logo}
+            alt="logo"
+          />
+          <button
+            onClick={() => setDark(!dark)}
+            className="p-2 rounded bg-gray-200 dark:bg-gray-500"
+          >
+            {dark ? "☀️ Light" : "🌙 Dark"}
+          </button>
         </nav>
 
         <div className="box mt-4 ml-24 h-24 sm:w-3/4 w-1/2  border-b-2 border-gray-200">
-          <h2 className="font-bold sm:text-xl text-sm">Create Flashcard</h2>
+          <h2 className="font-bold sm:text-xl text-sm dark:text-white">
+            Create Flashcard
+          </h2>
           <div className="flex justify-start mt-4">
             <div
               onClick={() => navigate("/")}
