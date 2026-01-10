@@ -13,14 +13,18 @@ const Flashcarddetails = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   // Finding the curreent clicked cardd
+
+  // get all the flascard from localstorage
   const Flashcards = JSON.parse(localStorage.getItem("flashcards")) || [];
 
+  // matches the id and return the clicked flashcard
   const currentCard = Flashcards.find((value) => String(value.id) === id);
 
   const [image, setImage] = useState(currentCard.Terms[0].image);
   const [des, setDes] = useState(currentCard.Terms[0].definition);
   const [currentTerms, setCurrentTerms] = useState(0);
 
+  // set the flashcard details as per selected id
   const setContent = (TermIndex) => {
     setCurrentTerms(TermIndex);
     setImage(currentCard.Terms[TermIndex].image);
@@ -74,8 +78,8 @@ const Flashcarddetails = () => {
               </ul>
             </div>
           </div>
-          <div className="flex flex-col items-center sm:w-4/5 w-full -ml-10">
-            <div className="bg-white shadow-md flex gap-1 w-3/4 h-auto sm:w-full sm:flex-row flex-col sm:min-h-64">
+          <div className="flex flex-col items-center sm:w-4/5 w-full -ml-10 sm:ml-2">
+            <div className="bg-white shadow-md flex gap-1 w-3/4 h-auto sm:w-full sm:flex-row flex-col sm:min-h-64 sm:max-h-80">
               <div className="img sm:w-full w-3/4 m-8">
                 <img
                   className="w-full h-full object-contain"
@@ -84,7 +88,7 @@ const Flashcarddetails = () => {
                 />
               </div>
               <div className="des sm:w-1/2 w-full h-auto flex flex-col justify-start items-start p-4">
-                <div className="text-gray-600 text-lg break-all">{des}</div>
+                <div className="text-gray-600 text-sm break-all">{des}</div>
               </div>
             </div>
             <div className="navigation-button flex gap-20 p-1">

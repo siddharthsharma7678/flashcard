@@ -4,12 +4,14 @@ import { FieldArray, FormikProvider, useFormik } from "formik";
 import { FaFileUpload } from "react-icons/fa";
 import { FaEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
-import { uploadToCloudinary } from "./Upload/uploadToCloudinary";
+import { uploadToCloudinary } from "../Upload/uploadToCloudinary";
+// used for celebration effect
+import Confetti from "react-confetti";
 
 const Createflashcard = () => {
   const navigate = useNavigate();
-  const fileInputRef = useRef(null);
-  const termImageRef = useRef([]);
+  const fileInputRef = useRef(null); // fileinput ref used for indirectly trigger the input
+  const termImageRef = useRef([]); //fileinput ref used for indirectly trigger the inputs
   const [status, setStatus] = useState(false);
   /* --------------------------------------------
      Formik setup
@@ -26,7 +28,7 @@ const Createflashcard = () => {
   };
 
   // handle the submision of the form button so that it will disappear when the form is submited
-  const handleClick = () => {};
+  // const handleClick = () => {};
 
   // delete the Image of specific term
   const handleTermDelete = (index) => {
@@ -37,6 +39,7 @@ const Createflashcard = () => {
   };
 
   //form validattion using formik start
+
   const validate = (values) => {
     const errors = {};
     if (!values.creategroup) {
@@ -76,6 +79,7 @@ const Createflashcard = () => {
   };
   //form validattion using formik end
 
+  // formik initialization starts
   const formik = useFormik({
     initialValues: {
       creategroup: "",
@@ -90,7 +94,12 @@ const Createflashcard = () => {
       ],
     },
     validate: validate,
-    onSubmit: async (values) => {
+    onSubmit: async (values, { resetForm }) => {
+      setStatus(true); // set the confetti to true
+      setTimeout(() => {
+        setStatus(false);
+        navigate("/myflashcard");
+      }, 3000);
       const groupImageurl = values.groupImage
         ? await uploadToCloudinary(values.groupImage)
         : null;
@@ -118,14 +127,24 @@ const Createflashcard = () => {
         JSON.stringify([...existing, newFlashcard])
       );
       console.log(localStorage.getItem("flashcards"));
-      navigate("/Myflashcard");
+      resetForm();
     },
   });
-
+  // formik initialization end
   return (
     <>
       {/* ===================== GROUP DETAILS ===================== */}
       <div className="box mt-4 sm:ml-24 ml-4 w-4/5 sm:w-3/4 border-2 rounded">
+        {status && (
+          <Confetti
+            numberOfPieces={400}
+            gravity={0.9} // ⬅ faster fall
+            wind={0.2} // ⬅ sideways speed
+            initialVelocityX={20}
+            initialVelocityY={25}
+            recycle={false}
+          />
+        )}
         {/* IMPORTANT:
            Button must be inside <form> to trigger submit */}
         <FormikProvider value={formik}>
@@ -337,10 +356,8 @@ const Createflashcard = () => {
             {/* <div className="button flex justify-center items-center"></div> */}
             <div className="flex justify-center items-center m-4">
               <button
-                onClick={handleClick}
                 type="submit"
-                className={`bg-red-600 text-white rounded p-1 w-24 ${
-                  status ? "hidden" : ""
+                className={`bg-red-600 text-white rounded p-1 w-24
                 }`}
               >
                 Create

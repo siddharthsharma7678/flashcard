@@ -4,8 +4,10 @@ import { useNavigate } from "react-router-dom";
 const Myflashcard = () => {
   const navigate = useNavigate();
 
+  // get the flashcard from localstorage
   const flashcards = JSON.parse(localStorage.getItem("flashcards")) || [];
 
+  // redirect with the id of the flashcard
   const HandleRedirectToFlashcardDetails = (id) => {
     navigate(`/flashcarddetails/${id}`);
   };

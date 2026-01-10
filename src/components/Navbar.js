@@ -3,8 +3,8 @@ import logo from "../images/logo.png";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 const Navbar = () => {
-  const navigate = useNavigate();
-  const Location = useLocation();
+  const navigate = useNavigate(); // use to navigate with diffrent url
+  const Location = useLocation(); // used for getting the params and paths
   return (
     <>
       <header className="w-full">

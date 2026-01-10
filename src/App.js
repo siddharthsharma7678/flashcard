@@ -3,10 +3,15 @@ import "./index.css";
 
 import Navbar from "./components/Navbar";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Createflashcard from "./components/Createflashcard";
-import Myflashcard from "./components/Myflashcard";
-import Flashcarddetails from "./components/Flashcarddetails";
-import Model from "./components/Model";
+
+// component imports start
+
+import Createflashcard from "./components/pages/Createflashcard";
+import Myflashcard from "./components/pages/Myflashcard";
+import Flashcarddetails from "./components/pages/Flashcarddetails";
+import Model from "./components/Model/Model";
+
+// component imports start
 function App() {
   return (
     <div className="App">

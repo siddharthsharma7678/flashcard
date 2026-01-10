@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+
+//  React icons import start
 import { RxCross2 } from "react-icons/rx";
 import { FaCopy } from "react-icons/fa";
 import { CiShare2 } from "react-icons/ci";
@@ -8,6 +10,7 @@ import { FaLinkedin } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
 import { CiMail } from "react-icons/ci";
 import { TiInputChecked } from "react-icons/ti";
+//  React icons import end
 
 import { useNavigate, useLocation } from "react-router-dom";
 
@@ -25,6 +28,7 @@ const Model = () => {
     navigate(-1);
   };
 
+  // handle copy of the url
   const handleCopy = () => {
     if (!url) return;
 
