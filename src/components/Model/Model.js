@@ -43,7 +43,7 @@ const Model = () => {
   return (
     <>
       <div class="fixed top-0 w-full h-full flex justify-center items-center backdrop-blur-sm ">
-        <div className="bg-white h-64 sm:w-auto w-5/6 shadow-md p-4 rounded -ml-16 dark:bg-gray-500">
+        <div className="bg-white h-64 sm:w-auto w-5/6 shadow-md p-4 rounded -ml-16 dark:bg-gray-800">
           <span onClick={handleCross} className="flex justify-end m-2">
             <RxCross2 />
           </span>
