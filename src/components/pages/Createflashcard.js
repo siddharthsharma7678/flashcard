@@ -246,7 +246,7 @@ const Createflashcard = () => {
                         className="flex items-start sm:gap-6 gap-2 sm:flex-row flex-col"
                       >
                         {/* Term */}
-                        <span className="bg-red-500 rounded-full sm:w-8 sm:h-8 w-8 h-8 translate-y-7 flex justify-center items-center mb-8">
+                        <span className="bg-red-500 rounded-full sm:w-8 sm:h-8 w-8 h-8 translate-y-6 flex justify-center items-center mb-8">
                           {index + 1}
                         </span>
                         <div className="flex flex-col">
