@@ -51,7 +51,7 @@ const Model = () => {
           <div className="link w-full">
             <div class="flex items-center sm:gap-2 border-2 border-gray-400 rounded sm:px-4">
               <div class="text-gray-700 border-r-2 p-2 dark:text-white">
-                src
+                SRC
               </div>
               <div
                 id="flahcard-link"
