@@ -1,5 +1,10 @@
 # Getting Started with Create React App
 
+Video explaination link :-https://youtu.be/p2Uvj-sThl8
+Docs Link               :-https://docs.google.com/document/d/13BUaP23K3woYDvDQmw3pQi5ACzAtc_ZHzckKpwS8JRs/edit?usp=sharing
+Website Link            :-https://flashcard-1qze.onrender.com/
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
